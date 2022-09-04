@@ -10,29 +10,29 @@ class NewsLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => NewsCubit(),
+      create: (BuildContext context) => NewsCubit()..getBusiness(),
       child: BlocConsumer<NewsCubit, NewsStates>(
         listener: (context, state) {},
         builder: (context, state) {
           var cubit = NewsCubit.get(context);
           return Scaffold(
-            floatingActionButton: FloatingActionButton(
-              onPressed: () {
-                DioHelper.getData(
-                  url: 'v2/top-headlines',
-                  query: {
-                    'country': 'eg',
-                    'category': 'business',
-                    'apiKey': 'b4bf465614544fe1841b1667074574ac',
-                  },
-                ).then((value) {
-                  print(value?.data.toString());
-                }).catchError((error) {
-                  print(error.toString);
-                });
-              },
-              child: Icon(Icons.add),
-            ),
+            // floatingActionButton: FloatingActionButton(
+            //   onPressed: () {
+            //     DioHelper.getData(
+            //       url: 'v2/top-headlines',
+            //       query: {
+            //         'country': 'eg',
+            //         'category': 'business',
+            //         'apiKey': 'b4bf465614544fe1841b1667074574ac',
+            //       },
+            //     ).then((value) {
+            //       print(value?.data.toString());
+            //     }).catchError((error) {
+            //       print(error.toString);
+            //     });
+            //   },
+            //   child: Icon(Icons.add),
+            // ),
             appBar: AppBar(
               title: const Text("News app"),
               actions: [

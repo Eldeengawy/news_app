@@ -28,8 +28,8 @@ class MyApp extends StatelessWidget {
           titleTextStyle: TextStyle(
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20.0),
           systemOverlayStyle: SystemUiOverlayStyle(
-            statusBarColor: Colors.white,
-          ),
+              statusBarColor: Colors.white,
+              statusBarIconBrightness: Brightness.dark),
           backgroundColor: Colors.white,
           elevation: 0.0,
         ),
