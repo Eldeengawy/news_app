@@ -18,6 +18,7 @@ class NewsLayout extends StatelessWidget {
             appBar: AppBar(
               title: Text("News app"),
             ),
+            body: cubit.screens[cubit.currentIndex],
             bottomNavigationBar: BottomNavigationBar(
               currentIndex: cubit.currentIndex,
               items: cubit.bottomItems,
