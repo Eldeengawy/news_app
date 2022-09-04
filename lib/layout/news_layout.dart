@@ -22,7 +22,7 @@ class NewsLayout extends StatelessWidget {
                   url: 'v2/top-headlines',
                   query: {
                     'country': 'eg',
-                    'category': 'buisness',
+                    'category': 'business',
                     'apiKey': 'b4bf465614544fe1841b1667074574ac',
                   },
                 ).then((value) {
