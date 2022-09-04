@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.black),
           titleTextStyle: TextStyle(
               color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20.0),
           systemOverlayStyle: SystemUiOverlayStyle(
@@ -26,8 +27,9 @@ class MyApp extends StatelessWidget {
           elevation: 0.0,
         ),
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          type: BottomNavigationBarType.fixed,
-        ),
+            type: BottomNavigationBarType.fixed,
+            selectedItemColor: Colors.deepOrange,
+            elevation: 20.0),
       ),
       home: const NewsLayout(),
     );
