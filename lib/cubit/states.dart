@@ -38,4 +38,13 @@ class NewsGetScienceErrorState extends NewsStates {
 
 //ToDo--------------------------------------------------------
 
+class NewsGetSearchSuccessState extends NewsStates {}
 
+class NewsGetSearchLoadingState extends NewsStates {}
+
+class NewsGetSearchErrorState extends NewsStates {
+  late final String error;
+  NewsGetSearchErrorState(this.error);
+}
+
+//ToDo--------------------------------------------------------

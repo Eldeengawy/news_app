@@ -99,3 +99,62 @@ Widget articalBuilder(list, context) {
     ),
   );
 }
+
+class CostumTextFormFeild extends StatelessWidget {
+  final TextEditingController controller;
+  final TextInputType type;
+  final String label;
+  final dynamic onSubmit;
+  final dynamic onChange;
+  final dynamic onTap;
+  final dynamic validate;
+  final dynamic prefix;
+  final dynamic suffix;
+  final dynamic suffixPressed;
+  final bool isPassword;
+
+  CostumTextFormFeild({
+    required this.label,
+    required this.controller,
+    required this.type,
+    required this.prefix,
+    this.onSubmit,
+    this.onChange,
+    required this.validate,
+    this.onTap,
+    this.suffixPressed,
+    this.suffix,
+    this.isPassword = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      controller: controller,
+      keyboardType: type,
+      onFieldSubmitted: onSubmit,
+      onChanged: onChange,
+      onTap: onTap,
+      validator: validate,
+      obscureText: isPassword,
+      decoration: InputDecoration(
+        suffixIcon: Icon(suffix),
+        prefixIcon: GestureDetector(
+          onTap: suffixPressed,
+          child: Icon(
+            prefix,
+          ),
+        ),
+        labelText: label,
+        border: OutlineInputBorder(),
+      ),
+    );
+  }
+}
+
+void navigateTo(context, widget) => Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => widget,
+      ),
+    );
