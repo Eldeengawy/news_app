@@ -3,62 +3,68 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:news_app/app_cubit/cubit.dart';
 import 'package:news_app/app_cubit/states.dart';
+import 'package:news_app/modules/web_view/web_view_screen.dart';
 
-Widget buildArticleItem(articel, context) => Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Row(
-        children: [
-          Container(
-            width: 120.0,
-            height: 120.0,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              image: DecorationImage(
-                image: NetworkImage(
-                  articel['urlToImage'] == null
-                      ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'
-                      : '${articel['urlToImage']}',
+Widget buildArticleItem(articel, context) => InkWell(
+      onTap: () {
+        navigateTo(context, WebViewScreen(url: articel['url']));
+      },
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Row(
+          children: [
+            Container(
+              width: 120.0,
+              height: 120.0,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                image: DecorationImage(
+                  image: NetworkImage(
+                    articel['urlToImage'] == null
+                        ? 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/65/No-Image-Placeholder.svg/330px-No-Image-Placeholder.svg.png?20200912122019'
+                        : '${articel['urlToImage']}',
+                  ),
+                  // image: NetworkImage(
+                  //   checkImage(articel),
+                  // ),
+                  fit: BoxFit.cover,
                 ),
-                // image: NetworkImage(
-                //   checkImage(articel),
-                // ),
-                fit: BoxFit.cover,
               ),
             ),
-          ),
-          SizedBox(
-            width: 20.0,
-          ),
-          BlocConsumer<AppCubit, AppStates>(
-              listener: (context, state) {},
-              builder: (context, state) {
-                return Expanded(
-                  child: Container(
-                    height: 120.0,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            maxLines: 4,
-                            overflow: TextOverflow.ellipsis,
-                            '${articel['title']}',
-                            style: Theme.of(context).textTheme.bodyText1,
+            SizedBox(
+              width: 20.0,
+            ),
+            BlocConsumer<AppCubit, AppStates>(
+                listener: (context, state) {},
+                builder: (context, state) {
+                  return Expanded(
+                    child: Container(
+                      height: 120.0,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              maxLines: 4,
+                              overflow: TextOverflow.ellipsis,
+                              '${articel['title']}',
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
                           ),
-                        ),
-                        Text(
-                          '${articel['publishedAt']}',
-                          style: TextStyle(
-                            color: Colors.grey,
+                          Text(
+                            '${articel['publishedAt']}',
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              })
-        ],
+                  );
+                })
+          ],
+        ),
       ),
     );
 
