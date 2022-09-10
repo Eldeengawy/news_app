@@ -91,7 +91,7 @@ Widget myDivider() {
   );
 }
 
-Widget articalBuilder(list, context) {
+Widget articalBuilder(list, context, {isSearch = false}) {
   return ConditionalBuilder(
     condition: list.length > 0,
     builder: (context) => ListView.separated(
@@ -101,9 +101,11 @@ Widget articalBuilder(list, context) {
       itemCount: 10,
     ),
     fallback: (context) => Center(
-      child: CircularProgressIndicator(
-        color: Colors.deepOrange,
-      ),
+      child: isSearch
+          ? Container()
+          : CircularProgressIndicator(
+              color: Colors.deepOrange,
+            ),
     ),
   );
 }
