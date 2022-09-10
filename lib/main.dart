@@ -72,6 +72,11 @@ class MyApp extends StatelessWidget {
                   elevation: 20.0),
             ),
             darkTheme: ThemeData(
+              inputDecorationTheme: const InputDecorationTheme(
+                  labelStyle: TextStyle(color: Colors.white),
+                  prefixIconColor: Colors.white,
+                  enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white))),
               scaffoldBackgroundColor: const Color(0xff333739),
               primarySwatch: Colors.deepOrange,
               appBarTheme: const AppBarTheme(
